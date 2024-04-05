@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/DataDog/datadog-operator/pkg/remoteconfig"
 	"github.com/go-logr/logr"
 	corev1 "k8s.io/api/core/v1"
 	apiequality "k8s.io/apimachinery/pkg/api/equality"
@@ -84,6 +85,7 @@ type Reconciler struct {
 	log          logr.Logger
 	recorder     record.EventRecorder
 	forwarders   datadog.MetricForwardersManager
+	rcUpdater    *remoteconfig.RemoteConfigUpdater
 }
 
 // NewReconciler returns a reconciler for DatadogAgent
